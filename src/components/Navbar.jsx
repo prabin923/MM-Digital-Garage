@@ -31,7 +31,7 @@ const Navbar = () => {
         <nav className="fixed w-full z-50 transition-all duration-300 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-md py-4">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
                 <div className="flex items-center gap-4">
-                    <img src={logo} alt="MM Digital Garage Logo" className="w-10 h-10 object-contain" />
+                    <img src={logo} alt="MM Digital Garage Logo" className="w-10 h-10 object-contain rounded-full" />
                     <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300">
                         MM Digital Garage
                     </h1>
