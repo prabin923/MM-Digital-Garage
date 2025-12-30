@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="MM Digital Garage - Your premier digital marketing agency specializing in innovative solutions and results-driven strategies">
+    <title>MM Digital Garage | Digital Marketing Excellence</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-content">
+            <div class="logo-container">
+                <img src="logo.png" alt="MM Digital Garage Logo" class="logo-image">
+                <h1 class="logo">MM Digital Garage</h1>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#scoreboard" class="nav-link">Results</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2 class="hero-title fade-in">
+                    Accelerate Your
+                    <span class="gradient-text">Digital Growth</span>
+                </h2>
+                <p class="hero-subtitle fade-in-delay">
+                    Transform your brand with cutting-edge digital marketing strategies that deliver measurable results
+                </p>
+                <div class="hero-buttons fade-in-delay-2">
+                    <a href="#contact" class="btn-primary">Get Started</a>
+                    <a href="#services" class="btn-secondary">Our Services</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card card-1">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop"
+                        alt="Digital Analytics Dashboard">
+                </div>
+                <div class="floating-card card-2">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop"
+                        alt="SEO Analytics">
+                </div>
+                <div class="floating-card card-3">
+                    <img src="social-media-marketing.jpg" alt="Social Media Marketing">
+                </div>
+                <div class="floating-card card-4">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop"
+                        alt="Team Collaboration">
+                </div>
+                <div class="floating-card card-5">
+                    <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=500&h=300&fit=crop"
+                        alt="Digital Advertising">
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="section-container">
+            <h2 class="section-title scroll-reveal">Our Services</h2>
+            <p class="section-subtitle scroll-reveal">Comprehensive digital solutions tailored to your business needs
+            </p>
+
+            <div class="services-grid">
+                <div class="service-card scroll-reveal">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop"
+                            alt="Brand Strategy Team Meeting">
+                    </div>
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Brand Strategy</h3>
+                    <p class="service-description">Build a powerful brand identity that resonates with your target
+                        audience and stands out in the market</p>
+                </div>
+
+                <div class="service-card scroll-reveal">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop"
+                            alt="SEO Analytics Dashboard">
+                    </div>
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+                        </svg>
+                    </div>
+                    <h3 class="service-title">SEO Optimization</h3>
+                    <p class="service-description">Dominate search rankings with data-driven SEO strategies that drive
+                        organic traffic and conversions</p>
+                </div>
+
+                <div class="service-card scroll-reveal">
+                    <div class="service-image">
+                        <img src="social-media-marketing.jpg" alt="Social Media Marketing">
+                    </div>
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Social Media Marketing</h3>
+                    <p class="service-description">Engage your audience and grow your brand presence across all major
+                        social platforms</p>
+                </div>
+
+                <div class="service-card scroll-reveal">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop"
+                            alt="Analytics Dashboard">
+                    </div>
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Analytics & Insights</h3>
+                    <p class="service-description">Make informed decisions with comprehensive analytics and actionable
+                        business insights</p>
+                </div>
+
+                <div class="service-card scroll-reveal">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=500&h=300&fit=crop"
+                            alt="Content Creation">
+                    </div>
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Content Marketing</h3>
+                    <p class="service-description">Create compelling content that attracts, engages, and converts your
+                        ideal customers</p>
+                </div>
+
+                <div class="service-card scroll-reveal">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=500&h=300&fit=crop"
+                            alt="Paid Advertising Campaigns">
+                    </div>
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Paid Advertising</h3>
+                    <p class="service-description">Maximize ROI with targeted ad campaigns across Google, Facebook,
+                        Instagram, and more</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Scoreboard Section -->
+    <section id="scoreboard" class="scoreboard-section">
+        <div class="section-container">
+            <h2 class="section-title scroll-reveal">Client Success Scoreboard</h2>
+            <p class="section-subtitle scroll-reveal">Real results that speak for themselves</p>
+
+            <div class="scoreboard-grid">
+                <div class="score-card scroll-reveal">
+                    <div class="score-number" data-target="200">0</div>
+                    <div class="score-suffix">+</div>
+                    <div class="score-label">Happy Clients</div>
+                </div>
+
+                <div class="score-card scroll-reveal">
+                    <div class="score-number" data-target="500">0</div>
+                    <div class="score-suffix">+</div>
+                    <div class="score-label">Projects Completed</div>
+                </div>
+
+                <div class="score-card scroll-reveal">
+                    <div class="score-number" data-target="95">0</div>
+                    <div class="score-suffix">%</div>
+                    <div class="score-label">Client Satisfaction</div>
+                </div>
+
+                <div class="score-card scroll-reveal">
+                    <div class="score-number" data-target="250">0</div>
+                    <div class="score-suffix">%</div>
+                    <div class="score-label">Average ROI Increase</div>
+                </div>
+            </div>
+
+            <div class="client-testimonials">
+                <h3 class="testimonials-title scroll-reveal">What Our Clients Say</h3>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card scroll-reveal">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">"MM Digital Garage transformed our online presence. Our traffic
+                            increased by 300% in just 6 months!"</p>
+                        <div class="testimonial-author">
+                            <strong>Homeglory</strong>
+                            <span>Client</span>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card scroll-reveal">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">"Professional, creative, and results-driven. They truly understand
+                            digital marketing."</p>
+                        <div class="testimonial-author">
+                            <strong>Ultra Group Nepal</strong>
+                            <span>Client</span>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card scroll-reveal">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">"The ROI we've seen from their campaigns exceeds all expectations.
+                            Highly recommend!"</p>
+                        <div class="testimonial-author">
+                            <strong>Maa Janaki Computer & Electronics</strong>
+                            <span>Client</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="section-container">
+            <div class="about-content">
+                <div class="about-text scroll-reveal">
+                    <h2 class="section-title">About MM Digital Garage</h2>
+                    <p class="about-description">
+                        We are a cutting-edge digital marketing agency dedicated to driving growth for businesses in the
+                        digital age.
+                        With a team of experienced strategists, creators, and analysts, we craft data-driven campaigns
+                        that deliver
+                        exceptional results.
+                    </p>
+                    <p class="about-description">
+                        Our mission is to empower brands to reach their full potential through innovative digital
+                        solutions,
+                        creative storytelling, and strategic thinking. We don't just follow trends—we create them.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Data-Driven Strategies</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Creative Excellence</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Transparent Reporting</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>24/7 Support</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual scroll-reveal">
+                    <div class="visual-grid">
+                        <div class="visual-item">
+                            <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=400&fit=crop"
+                                alt="Digital Marketing Team">
+                        </div>
+                        <div class="visual-item">
+                            <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=400&fit=crop"
+                                alt="Creative Strategy">
+                        </div>
+                        <div class="visual-item">
+                            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=400&fit=crop"
+                                alt="Business Growth">
+                        </div>
+                        <div class="visual-item">
+                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=400&fit=crop"
+                                alt="Team Collaboration">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="section-container">
+            <h2 class="section-title scroll-reveal">Let's Grow Together</h2>
+            <p class="section-subtitle scroll-reveal">Ready to take your digital marketing to the next level?</p>
+
+            <div class="contact-content">
+                <form class="contact-form scroll-reveal" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="company" placeholder="Company Name">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="5" placeholder="Tell us about your project" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+
+                <div class="contact-info scroll-reveal">
+                    <div class="info-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        <div>
+                            <h4>Email</h4>
+                            <p>mmdigitalgarage@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>9826983391</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Kathmandu, Nepal</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>MM Digital Garage</h3>
+                <p>Driving digital excellence since 2019</p>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/company/109477274/" class="social-link" target="_blank"
+                    rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://www.instagram.com/mmdigitalgarage1/" class="social-link" target="_blank"
+                    rel="noopener noreferrer">Instagram</a>
+                <a href="https://www.facebook.com/profile.php?id=100090076563092" class="social-link" target="_blank"
+                    rel="noopener noreferrer">Facebook</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 MM Digital Garage. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+
+</html>

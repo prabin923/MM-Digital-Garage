@@ -1,0 +1,24 @@
+{
+  "name": "clear",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/prabin923/MM-Digital-Garage#readme",
+  "bugs": {
+    "url": "https://github.com/prabin923/MM-Digital-Garage/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prabin923/MM-Digital-Garage.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
