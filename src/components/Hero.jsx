@@ -34,47 +34,47 @@ const Hero = () => {
 
                 {/* Visual Content (Floating Cards) */}
                 <div className="relative h-[400px] sm:h-[500px] w-full hidden sm:block">
-                    {/* Card 1 - Analytics */}
+                    {/* Card 1 - Analytics (Top Left) */}
                     <motion.div
                         animate={{ y: [0, -20, 0] }}
                         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute top-0 left-0 w-48 h-32 bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden z-20 transform -rotate-6 border border-gray-100 dark:border-gray-700"
+                        className="absolute top-0 left-4 w-48 h-32 bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden z-20 transform -rotate-6 border border-gray-100 dark:border-gray-700"
                     >
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600" alt="Analytics" className="w-full h-full object-cover" />
                     </motion.div>
 
-                    {/* Card 2 - SEO */}
+                    {/* Card 2 - SEO (Bottom Right) */}
                     <motion.div
                         animate={{ y: [0, 20, 0] }}
                         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                        className="absolute bottom-10 right-0 w-40 h-40 bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden z-20 transform rotate-12 border border-gray-100 dark:border-gray-700"
+                        className="absolute bottom-12 -right-4 w-40 h-40 bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden z-20 transform rotate-12 border border-gray-100 dark:border-gray-700"
                     >
                         <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500" alt="SEO" className="w-full h-full object-cover" />
                     </motion.div>
 
-                    {/* Card 4 - Content (New) */}
+                    {/* Card 4 - Content (Top Right) */}
                     <motion.div
                         animate={{ x: [0, 10, 0], y: [0, -10, 0] }}
                         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                        className="absolute top-10 right-10 w-36 h-28 bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden z-10 transform rotate-3 border border-gray-100 dark:border-gray-700"
+                        className="absolute top-8 right-6 w-36 h-28 bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden z-10 transform rotate-3 border border-gray-100 dark:border-gray-700"
                     >
                         <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=500" alt="Content" className="w-full h-full object-cover" />
                     </motion.div>
 
-                    {/* Card 5 - Team (New) */}
+                    {/* Card 5 - Team (Bottom Left) */}
                     <motion.div
                         animate={{ x: [0, -10, 0], y: [0, 10, 0] }}
                         transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                        className="absolute bottom-20 left-10 w-32 h-32 bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden z-10 transform -rotate-3 border border-gray-100 dark:border-gray-700"
+                        className="absolute bottom-16 left-0 w-32 h-32 bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden z-10 transform -rotate-3 border border-gray-100 dark:border-gray-700"
                     >
                         <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=500" alt="Team" className="w-full h-full object-cover" />
                     </motion.div>
 
-                    {/* Card 3 (Center) - Social Media */}
+                    {/* Card 3 (Center) - Social Media - Increased Z-index to stand out */}
                     <motion.div
                         animate={{ scale: [1, 1.05, 1] }}
                         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-56 h-56 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden z-30 border-4 border-white dark:border-gray-700"
+                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden z-30 border-4 border-white dark:border-gray-700"
                     >
                         <img src={socialMediaImg} alt="Social Media" className="w-full h-full object-cover" />
                     </motion.div>
