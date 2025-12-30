@@ -32,54 +32,52 @@ const Hero = () => {
                     </div>
                 </motion.div>
 
-                {/* Visual Content (Floating Cards) */}
-                <div className="relative h-[400px] sm:h-[500px] w-full hidden sm:block">
-                    {/* Card 1 - Analytics (Top Left) */}
+                {/* Visual Content (Side Cluster Floating Layout) */}
+                <div className="relative h-[350px] sm:h-[450px] w-full hidden sm:block">
+                    {/* Card 1 - Analytics (Top Left) - Moved down for vertical closeness */}
                     <motion.div
-                        animate={{ y: [0, -20, 0] }}
+                        animate={{ y: [0, -10, 0] }}
                         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute top-0 left-0 w-44 h-28 bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden z-20 transform -rotate-6 border border-gray-100 dark:border-gray-700"
+                        className="absolute top-[15%] left-[20%] w-44 h-32 bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden z-20 transform -rotate-6 border border-gray-100 dark:border-gray-700"
                     >
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600" alt="Analytics" className="w-full h-full object-cover" />
                     </motion.div>
 
-                    {/* Card 2 - SEO (Bottom Right) */}
+                    {/* Card 2 - SEO (Bottom Right) - Moved up for vertical closeness & Fixed Overlap */}
                     <motion.div
-                        animate={{ y: [0, 20, 0] }}
+                        animate={{ y: [0, 10, 0] }}
                         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                        className="absolute bottom-8 right-0 w-36 h-36 bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden z-20 transform rotate-12 border border-gray-100 dark:border-gray-700"
+                        className="absolute bottom-[40%] right-[2%] w-40 h-32 bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden z-20 transform rotate-6 border border-gray-100 dark:border-gray-700"
                     >
                         <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500" alt="SEO" className="w-full h-full object-cover" />
                     </motion.div>
 
-                    {/* Card 4 - Content (Top Right) */}
+                    {/* Card 4 - Content (Top Right) - Moved down for vertical closeness */}
                     <motion.div
-                        animate={{ x: [0, 10, 0], y: [0, -10, 0] }}
+                        animate={{ x: [0, 8, 0], y: [0, -8, 0] }}
                         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                        className="absolute top-4 right-4 w-32 h-24 bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden z-10 transform rotate-3 border border-gray-100 dark:border-gray-700"
+                        className="absolute top-[45%] right-[50%] w-36 h-28 bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden z-10 transform rotate-3 border border-gray-100 dark:border-gray-700"
                     >
                         <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=500" alt="Content" className="w-full h-full object-cover" />
                     </motion.div>
 
-                    {/* Card 5 - Team (Bottom Left) */}
+                    {/* Card 5 - Team (Bottom Left) - Moved up for vertical closeness */}
                     <motion.div
-                        animate={{ x: [0, -10, 0], y: [0, 10, 0] }}
+                        animate={{ x: [0, -8, 0], y: [0, 8, 0] }}
                         transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                        className="absolute bottom-12 left-4 w-28 h-28 bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden z-10 transform -rotate-3 border border-gray-100 dark:border-gray-700"
+                        className="absolute bottom-[15%] left-[2%] w-36 h-28 bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden z-10 transform -rotate-3 border border-gray-100 dark:border-gray-700"
                     >
                         <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=500" alt="Team" className="w-full h-full object-cover" />
                     </motion.div>
 
-                    {/* Card 3 (Center) - Social Media - Reduced size to prevent overlap */}
+                    {/* Card 3 (Center) - Social Media - Kept clear */}
                     <motion.div
                         animate={{ scale: [1, 1.05, 1] }}
                         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden z-30 border-4 border-white dark:border-gray-700"
+                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 sm:w-56 sm:h-56 bg-white dark:bg-gray-800 shadow-2xl overflow-hidden z-30 border -[2px] border-gray-100 dark:border-gray-700 rounded-[30px]"
                     >
                         <img src={socialMediaImg} alt="Social Media" className="w-full h-full object-cover" />
                     </motion.div>
-
-                    {/* Decorative blobs/dots could be added here if needed */}
                 </div>
             </div>
 
