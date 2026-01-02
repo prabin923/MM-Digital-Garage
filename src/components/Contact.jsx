@@ -1,7 +1,53 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, Loader2, CheckCircle, XCircle } from 'lucide-react';
 
 const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        company: '',
+        message: ''
+    });
+    const [isLoading, setIsLoading] = useState(false);
+    const [status, setStatus] = useState({ type: '', message: '' });
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsLoading(true);
+        setStatus({ type: '', message: '' });
+
+        try {
+            const response = await fetch('http://localhost:5000/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                setStatus({ type: 'success', message: data.message });
+                setFormData({ name: '', email: '', company: '', message: '' });
+            } else {
+                setStatus({ type: 'error', message: data.message });
+            }
+        } catch (error) {
+            setStatus({ type: 'error', message: 'Failed to connect to the server. Please try again later.' });
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     return (
         <section id="contact" className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -24,22 +70,70 @@ const Contact = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         className="space-y-6"
-                        onSubmit={(e) => e.preventDefault()}
+                        onSubmit={handleSubmit}
                     >
+                        {status.message && (
+                            <div className={`p-4 rounded-lg flex items-center gap-2 ${status.type === 'success' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'}`}>
+                                {status.type === 'success' ? <CheckCircle size={20} /> : <XCircle size={20} />}
+                                {status.message}
+                            </div>
+                        )}
                         <div>
-                            <input type="text" placeholder="Your Name" className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-transparent transition-all" required />
+                            <input
+                                type="text"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                placeholder="Your Name"
+                                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-transparent transition-all"
+                                required
+                            />
                         </div>
                         <div>
-                            <input type="email" placeholder="Your Email" className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-transparent transition-all" required />
+                            <input
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                placeholder="Your Email"
+                                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-transparent transition-all"
+                                required
+                            />
                         </div>
                         <div>
-                            <input type="text" placeholder="Company Name" className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-transparent transition-all" />
+                            <input
+                                type="text"
+                                name="company"
+                                value={formData.company}
+                                onChange={handleChange}
+                                placeholder="Company Name"
+                                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-transparent transition-all"
+                            />
                         </div>
                         <div>
-                            <textarea rows="5" placeholder="Tell us about your project" className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-transparent transition-all" required></textarea>
+                            <textarea
+                                rows="5"
+                                name="message"
+                                value={formData.message}
+                                onChange={handleChange}
+                                placeholder="Tell us about your project"
+                                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-transparent transition-all"
+                                required
+                            ></textarea>
                         </div>
-                        <button type="submit" className="w-full py-4 bg-black dark:bg-white text-white dark:text-gray-900 rounded-lg font-bold hover:bg-gray-800 dark:hover:bg-gray-100 transition-all transform hover:scale-[1.02] shadow-lg">
-                            Send Message
+                        <button
+                            type="submit"
+                            disabled={isLoading}
+                            className="w-full py-4 bg-black dark:bg-white text-white dark:text-gray-900 rounded-lg font-bold hover:bg-gray-800 dark:hover:bg-gray-100 transition-all transform hover:scale-[1.02] shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                        >
+                            {isLoading ? (
+                                <>
+                                    <Loader2 className="w-5 h-5 animate-spin" />
+                                    Sending...
+                                </>
+                            ) : (
+                                'Send Message'
+                            )}
                         </button>
                     </motion.form>
 
@@ -92,3 +186,4 @@ const Contact = () => {
 };
 
 export default Contact;
+
