@@ -1,16 +1,19 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Loader2, CheckCircle, XCircle } from 'lucide-react';
 
+import emailjs from '@emailjs/browser';
+
 const Contact = () => {
     const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        company: '',
-        message: ''
+        user_name: '',
+        user_email: '',
+        user_company: '',
+        user_message: ''
     });
     const [isLoading, setIsLoading] = useState(false);
     const [status, setStatus] = useState({ type: '', message: '' });
+    const form = useRef();
 
     const handleChange = (e) => {
         setFormData({
@@ -25,24 +28,25 @@ const Contact = () => {
         setStatus({ type: '', message: '' });
 
         try {
-            const response = await fetch('http://localhost:5000/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
+            const result = await emailjs.sendForm(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+                form.current,
+                {
+                    publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+                }
+            );
 
-            const data = await response.json();
-
-            if (data.success) {
-                setStatus({ type: 'success', message: data.message });
-                setFormData({ name: '', email: '', company: '', message: '' });
+            if (result.status === 200) {
+                setStatus({ type: 'success', message: 'Your message has been sent successfully!' });
+                setFormData({ user_name: '', user_email: '', user_company: '', user_message: '' });
+                form.current.reset();
             } else {
-                setStatus({ type: 'error', message: data.message });
+                setStatus({ type: 'error', message: 'Failed to send message. Please try again later.' });
             }
         } catch (error) {
-            setStatus({ type: 'error', message: 'Failed to connect to the server. Please try again later.' });
+            console.error('EmailJS Error:', error);
+            setStatus({ type: 'error', message: 'Failed to send message. Please check your connection.' });
         } finally {
             setIsLoading(false);
         }
@@ -66,6 +70,7 @@ const Contact = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
 
                     <motion.form
+                        ref={form}
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
@@ -81,8 +86,8 @@ const Contact = () => {
                         <div>
                             <input
                                 type="text"
-                                name="name"
-                                value={formData.name}
+                                name="user_name"
+                                value={formData.user_name}
                                 onChange={handleChange}
                                 placeholder="Your Name"
                                 className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-transparent transition-all"
@@ -92,8 +97,8 @@ const Contact = () => {
                         <div>
                             <input
                                 type="email"
-                                name="email"
-                                value={formData.email}
+                                name="user_email"
+                                value={formData.user_email}
                                 onChange={handleChange}
                                 placeholder="Your Email"
                                 className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-transparent transition-all"
@@ -103,8 +108,8 @@ const Contact = () => {
                         <div>
                             <input
                                 type="text"
-                                name="company"
-                                value={formData.company}
+                                name="user_company"
+                                value={formData.user_company}
                                 onChange={handleChange}
                                 placeholder="Company Name"
                                 className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-transparent transition-all"
@@ -113,8 +118,8 @@ const Contact = () => {
                         <div>
                             <textarea
                                 rows="5"
-                                name="message"
-                                value={formData.message}
+                                name="user_message"
+                                value={formData.user_message}
                                 onChange={handleChange}
                                 placeholder="Tell us about your project"
                                 className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-transparent transition-all"

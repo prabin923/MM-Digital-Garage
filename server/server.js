@@ -1,32 +1,63 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const nodemailer = require('nodemailer');
+const https = require('https');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
-// Create transporter for sending emails
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    }
-});
+// Function to send email via EmailJS REST API
+const sendEmailJS = (data) => {
+    return new Promise((resolve, reject) => {
+        const payload = JSON.stringify({
+            service_id: process.env.EMAILJS_SERVICE_ID,
+            template_id: process.env.EMAILJS_TEMPLATE_ID,
+            user_id: process.env.EMAILJS_PUBLIC_KEY,
+            accessToken: process.env.EMAILJS_PRIVATE_KEY,
+            template_params: {
+                from_name: data.name,
+                from_email: data.email,
+                company: data.company || 'Not provided',
+                message: data.message
+            }
+        });
 
-// Verify transporter configuration
-transporter.verify((error, success) => {
-    if (error) {
-        console.error('Email configuration error:', error);
-    } else {
-        console.log('Email server is ready to send messages');
-    }
-});
+        const options = {
+            hostname: 'api.emailjs.com',
+            path: '/api/v1.0/email/send',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Content-Length': payload.length
+            }
+        };
+
+        const req = https.request(options, (res) => {
+            let responseData = '';
+            res.on('data', (chunk) => {
+                responseData += chunk;
+            });
+            res.on('end', () => {
+                if (res.statusCode === 200) {
+                    resolve(responseData);
+                } else {
+                    reject(new Error(`EmailJS Error: ${res.statusCode} - ${responseData}`));
+                }
+            });
+        });
+
+        req.on('error', (error) => {
+            reject(error);
+        });
+
+        req.write(payload);
+        req.end();
+    });
+};
 
 // Contact form endpoint
 app.post('/api/contact', async (req, res) => {
@@ -40,63 +71,28 @@ app.post('/api/contact', async (req, res) => {
         });
     }
 
-    // Email to the business (notification)
-    const notificationMailOptions = {
-        from: process.env.EMAIL_USER,
-        to: process.env.NOTIFY_EMAIL,
-        subject: `New Contact Form Submission from ${name}`,
-        html: `
-            <h2>New Contact Form Submission</h2>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Company:</strong> ${company || 'Not provided'}</p>
-            <hr>
-            <p><strong>Message:</strong></p>
-            <p>${message}</p>
-        `
-    };
-
-    // Confirmation email to the sender
-    const confirmationMailOptions = {
-        from: process.env.EMAIL_USER,
-        to: email,
-        subject: 'Thank you for contacting MM Digital Garage!',
-        html: `
-            <h2>Thank you for reaching out, ${name}!</h2>
-            <p>We have received your message and will get back to you within 24 hours.</p>
-            <hr>
-            <p><strong>Your message:</strong></p>
-            <p>${message}</p>
-            <hr>
-            <p>Best regards,<br>MM Digital Garage Team</p>
-        `
-    };
-
     try {
-        // Send notification email
-        await transporter.sendMail(notificationMailOptions);
-
-        // Send confirmation email to sender
-        await transporter.sendMail(confirmationMailOptions);
+        console.log(`Sending email for ${name}...`);
+        await sendEmailJS({ name, email, company, message });
 
         res.status(200).json({
             success: true,
-            message: 'Your message has been sent successfully!'
+            message: 'Your message has been sent successfully via EmailJS!'
         });
     } catch (error) {
-        console.error('Error sending email:', error);
+        console.error('Error sending email via EmailJS:', error.message);
         res.status(500).json({
             success: false,
-            message: 'Failed to send message. Please try again later.'
+            message: 'Failed to send message. Please ensure backend EmailJS credentials are correct.'
         });
     }
 });
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
-    res.json({ status: 'Server is running' });
+    res.json({ status: 'Server is running', service: 'EmailJS' });
 });
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`Server running on port ${PORT} with EmailJS integration`);
 });
